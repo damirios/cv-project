@@ -1,0 +1,23 @@
+.dates {
+    display: flex;
+    flex-direction: column;
+    row-gap: 15px;
+}
+
+.dates input {
+    width: 200px;
+}
+
+.dates__from {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    column-gap: 15px;
+}
+
+.dates__to {
+    display: flex;
+    column-gap: 15px;
+    justify-content: flex-end;
+    align-items: center;
+}
