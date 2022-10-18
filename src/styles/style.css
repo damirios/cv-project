@@ -18,38 +18,106 @@ body {
 	background-color: rgb(247, 214, 162);
 }
 
+/* HEADER ========================================================================================== */
 .header {
-	flex: 0 0 80px;
+	flex: 0 0 60px;
 	display: flex;
 	align-items: center;
+	background-color: rgb(156, 246, 231);
+	box-shadow: 2px 0 5px #222;
 }
 .header__row {
 	display: flex;
 	align-items: center;
-	justify-content: center;
+	justify-content: space-between;
+}
+
+.header__title {
+	flex: 1 0 auto;
+	font-size: 32px;
+	font-family: 'Roboto';
+	font-weight: 700;
+	color: #666;
+	cursor: default;
+}
+
+.header__buttons {
+	flex: 1 1 300px;
+	display: flex;
+	justify-content: flex-end;
+	column-gap: 10px;
+}
+
+.header__buttons button {
+	cursor: pointer;
+	height: 30px;
+	min-width: 70px;
+	border-radius: 5px;
+	border: 1px solid rgb(58, 58, 58);
+	outline: none;
+	background-color: rgb(75, 220, 231);
+	color: rgb(47, 49, 48);
+	font-size: 14px;
+	font-weight: 700;
+	transition: color, background-color 0.3s ease-in-out 0s;
+	box-shadow: 0 2px 4px #333;
+}
+.header__buttons button:hover {
+	background-color: rgb(89, 115, 123);
+	color: rgb(242, 238, 238);
+}
+.header__buttons button:active {
+	position: relative;
+	top: 2px;
+	box-shadow: 0px 0px 1px #333;
 }
 
 .content {
 	flex: 1 0 auto;
+	padding: 20px 0;
 }
 
 .footer {
-	flex: 0 0 80px;
+	flex: 0 0 60px;
 	display: flex;
 	align-items: center;
+	box-shadow: -2px 0 5px #222;
+	background-color: rgb(156, 246, 231);
 }
 .footer__row {
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	font-size: 20px;
+	font-family: 'Roboto';
+	font-weight: 700;
+	color: #666;
+}
+
+.footer__row a {
+	text-decoration: none;
+	color:rgb(212, 137, 51);
+	transition: all 0.3s ease-in-out 0s;
+}
+
+.footer__row a:hover {
+	text-decoration: underline;
+	color: rgb(250, 147, 29);
 }
 
 .container {
-	flex: 1 0 auto;
-	max-width: 1200px;
+	flex: 1 1 auto;
 	padding: 0 15px;
 	margin: 0 auto;
+	max-width: 1200px;
 }
+
+@media (min-width: 1440px) {
+	.container {
+		max-width: 1350px;
+	}
+}
+
 
 /* Content */
 .content {
@@ -58,8 +126,7 @@ body {
 
 .content__form {
 	height: 100%;
-	display: grid;
-	grid-template-columns: 2fr 4fr 1fr;
+	display: flex;
 	column-gap: 15px;
 }
 
@@ -75,9 +142,10 @@ body {
 
 /* Personal Info */
 .personal-info {
-	padding: 5px;
+	padding: 15px;
 	border-radius: 10px;
-	grid-area: 1 / 1 / 2 / 2;
+	flex: 1 1 300px;
+	max-width: 370px;
 	background-color: rgb(99, 155, 54);
 	box-shadow: 1px 2px 5px #555;
 }
@@ -148,9 +216,53 @@ body {
 
 /* Education and Experience common blocks */
 .education-and-experience {
-	grid-area: 1 / 2 / 2 / 3;
+	/* height: 100%; */
+	flex: 1 1 400px;
+	display: flex;
+	flex-direction: column;
+	row-gap: 10px;
 }
 
+.buttons {
+	margin-top: auto;
+	display: flex;
+	column-gap: 20px;
+	justify-content: flex-end;
+}
+
+.buttons button {
+	height: 30px;
+	border-radius: 5px;
+	border: 2px solid rgb(135, 135, 135);
+	width: 150px;
+	box-shadow: 1px 2px 5px rgb(64, 71, 71);
+	cursor: pointer;
+	color: #000;
+	font-style: italic;
+	font-weight: 600;
+}
+
+.buttons button:active {
+	position: relative;
+	top: 2px;
+	box-shadow: 0px 0px 0px #000;
+}
+
+.add-button {
+	background-color: rgb(54, 236, 22);
+	transition: background-color 0.3s ease-in-out 0s;
+}
+.add-button:hover {
+	background-color: rgb(48, 250, 13);
+}
+
+.delete-button {
+	background-color: rgb(229, 139, 49);
+	transition: background-color 0.3s ease-in-out 0s;
+}
+.delete-button:hover {
+	background-color: rgb(253, 129, 5);
+}
 
 .single-block {
 	display: grid;
@@ -187,20 +299,45 @@ body {
 
 /* Education */
 .education {
+	flex: 1 1 300px;
 	background-color: rgb(25, 133, 88);
 	border-radius: 10px;
-	padding: 5px;
+	padding: 15px;
 	box-shadow: 1px 2px 5px #555;
 	color: #fff;
+	display: flex;
+	flex-direction: column;
+	row-gap: 25px;
 }
 
 /* Experience */
 .experience {
-	padding: 5px;
+	flex: 1 1 300px;
+	background-color: rgb(6, 180, 183);
+	border-radius: 10px;
+	padding: 15px;
+	box-shadow: 1px 2px 5px #555;
+	color: #fff;
+	display: flex;
+	flex-direction: column;
+	row-gap: 25px;
 }
 
 /* Controller */
 .controller {
-	grid-area: 1 / 3 / -1 / -1;
-	background-color: #fff;
+	flex: 0 1 200px;
+	background-color: rgb(100, 148, 172);
+	border-radius: 10px;
+	padding: 5px;
+	box-shadow: 1px 2px 5px #555;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	row-gap: 10px;
+	max-height: 550px;
+}
+
+.controller h2 {
+	align-self: start;
+	margin-bottom: 0;
 }

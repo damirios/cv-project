@@ -35,27 +35,88 @@ class PersonalInfo extends Component {
         }
     }
 
+    getPhoto(example) {
+        if (example == null) {
+            return "./images/avatar.png";
+        }
+        return example.photoSRC;
+    }
+
+    getFisrtName(example) {
+        if (example == null) {
+            return "";
+        }
+        return example.firstName;
+    }
+
+    getLastName(example) {
+        if (example == null) {
+            return "";
+        }
+        return example.lastName;
+    }
+
+    getPosition(example) {
+        if (example == null) {
+            return "";
+        }
+        return example.position;
+    }
+
+    getAddress(example) {
+        if (example == null) {
+            return "";
+        }
+        return example.address;
+    }
+
+    getPhone(example) {
+        if (example == null) {
+            return "";
+        }
+        return example.phone;
+    }
+
+    getEmail(example) {
+        if (example == null) {
+            return "";
+        }
+        return example.email;
+    }
+
+    getDescription(example) {
+        if (example == null) {
+            return "";
+        }
+        return example.aboutMe;
+    }
+
     render() {
+        const {example} = this.props;
+        
         return (
             <div className="personal-info">
                 <h2 className='header-text'>Personal Info</h2>
                 <div className="personal-info__grid">
                     <div className="personal-info__photo">
-                        <label htmlFor="userphoto"></label>
-                        <input id='userphoto' type="file" onChange={this.photoChange} accept=".jpg, .png, .jpeg, .gif, .bmp, .tif,"/>
+                        <label htmlFor="userphoto">
+                            <img src={this.getPhoto(example)} alt="avatar" />
+                        </label>
+                        <input id='userphoto' type="file" onChange={this.photoChange}
+                        accept=".jpg, .png, .jpeg, .gif, .bmp, .tif,"/>
                     </div>
                     <div className="personal-info__common">
-                        <Input type='text' placeholder='First name' name='first-name'/>
-                        <Input type='text' placeholder='Last name' name='last-name'/>
-                        <Input classname='personal-info__position' type='text' placeholder='Position' name='job-position'/>
+                        <Input type='text' placeholder='First name' name='first-name' value={this.getFisrtName(example)} />
+                        <Input type='text' placeholder='Last name' name='last-name' value={this.getLastName(example)} />
+                        <Input classname='personal-info__position' type='text' placeholder='Position' name='job-position' value={this.getPosition(example)}/>
                     </div>
                     <div className="personal-info__contacts">
-                        <Input type='text' placeholder='Address' name='address'/>
-                        <Input type='tel' placeholder='Phone number' name='phone'/>
-                        <Input type='email' placeholder='Email' name='email' required='required'/>
+                        <Input type='text' placeholder='Address' name='address' value={this.getAddress(example)} />
+                        <Input type='tel' placeholder='Phone number' name='phone' value={this.getPhone(example)} />
+                        <Input type='email' placeholder='Email' name='email' required='required' value={this.getEmail(example)} />
                     </div>
                     <div className="personal-info__about-me">
-                        <textarea name="about-me" placeholder='Tell about yourself'></textarea>
+                        <textarea name="about-me" placeholder='Tell about yourself' defaultValue={this.getDescription(example)}></textarea>
                     </div>
                 </div>
             </div>
