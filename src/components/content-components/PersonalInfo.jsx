@@ -39,7 +39,7 @@ class PersonalInfo extends Component {
         if (example == null) {
             return "./images/avatar.png";
         }
-        return example.photoSRC;
+        return example.photo;
     }
 
     getFisrtName(example) {
@@ -88,11 +88,11 @@ class PersonalInfo extends Component {
         if (example == null) {
             return "";
         }
-        return example.aboutMe;
+        return example.description;
     }
 
     render() {
-        const {example} = this.props;
+        const {personal} = this.props;
         
         return (
             <div className="personal-info">
@@ -100,23 +100,23 @@ class PersonalInfo extends Component {
                 <div className="personal-info__grid">
                     <div className="personal-info__photo">
                         <label htmlFor="userphoto">
-                            <img src={this.getPhoto(example)} alt="avatar" />
+                            <img src={this.getPhoto(personal)} alt="avatar" />
                         </label>
                         <input id='userphoto' type="file" onChange={this.photoChange}
                         accept=".jpg, .png, .jpeg, .gif, .bmp, .tif,"/>
                     </div>
                     <div className="personal-info__common">
-                        <Input type='text' placeholder='First name' name='first-name' value={this.getFisrtName(example)} />
-                        <Input type='text' placeholder='Last name' name='last-name' value={this.getLastName(example)} />
-                        <Input classname='personal-info__position' type='text' placeholder='Position' name='job-position' value={this.getPosition(example)}/>
+                        <Input type='text' placeholder='First name' name='first-name' value={this.getFisrtName(personal)} />
+                        <Input type='text' placeholder='Last name' name='last-name' value={this.getLastName(personal)} />
+                        <Input classname='personal-info__position' type='text' placeholder='Position' name='job-position' value={this.getPosition(personal)}/>
                     </div>
                     <div className="personal-info__contacts">
-                        <Input type='text' placeholder='Address' name='address' value={this.getAddress(example)} />
-                        <Input type='tel' placeholder='Phone number' name='phone' value={this.getPhone(example)} />
-                        <Input type='email' placeholder='Email' name='email' required='required' value={this.getEmail(example)} />
+                        <Input type='text' placeholder='Address' name='address' value={this.getAddress(personal)} />
+                        <Input type='tel' placeholder='Phone number' name='phone' value={this.getPhone(personal)} />
+                        <Input type='email' placeholder='Email' name='email' required='required' value={this.getEmail(personal)} />
                     </div>
                     <div className="personal-info__about-me">
-                        <textarea name="about-me" placeholder='Tell about yourself' defaultValue={this.getDescription(example)}></textarea>
+                        <textarea name="about-me" placeholder='Tell about yourself' defaultValue={this.getDescription(personal)}></textarea>
                     </div>
                 </div>
             </div>

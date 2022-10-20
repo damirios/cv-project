@@ -6,11 +6,16 @@ class Education extends Component {
     constructor(props) {
         super(props);
 
+        this.allBlocks = [];
+        for (let i = 0; i < Object.keys(props.educationFields).length; i++) {
+            this.allBlocks.push({id: uuidv4()});
+        }
+        
         this.state = {
             newBlock: {
                 id: uuidv4()
             },
-            allBlocks: [{id: uuidv4()}]
+            allBlocks: this.allBlocks
         }
 
         this.addBlock = this.addBlock.bind(this);
@@ -33,9 +38,10 @@ class Education extends Component {
     }
 
     render() { 
-        const {example} = this.props;
-        if (example != null) {
-            example.type = 'education'; // заполняю блок education, а не experience (оба имеют одинаковую структуру и компоненты)
+        const {educationFields} = this.props;
+
+        if (educationFields != null) {
+            educationFields.type = 'education'; // заполняю блок education, а не experience (оба имеют одинаковую структуру и компоненты)
         }
 
         const { allBlocks } = this.state;
@@ -47,7 +53,7 @@ class Education extends Component {
         return ( 
             <div className="education">
                 <h2 className='header-text'>Education</h2>
-                <SeveralBlocks allBlocks={allBlocks} educationAndJob={educationAndJob} example={example}/>
+                <SeveralBlocks allBlocks={allBlocks} educationAndJob={educationAndJob} fields={educationFields}/>
                 <div className="buttons">
                     <button className='delete-button' type='button' onClick={this.deleteBlock}>Delete last block</button>
                     <button className='add-button' type='button' onClick={this.addBlock}>Add new block</button>

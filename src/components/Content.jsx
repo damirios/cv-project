@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import Education from "./content-components/Education";
 import Experience from "./content-components/Experience";
-import PersonalInfo from "./content-components/Personal-info";
+import PersonalInfo from "./content-components/PersonalInfo";
 
 class Content extends Component {
     constructor(props) {
@@ -9,16 +9,16 @@ class Content extends Component {
     }
 
     render() {
-        const {example} = this.props;
-
+        const {cvFields} = this.props;
+        
         return (
             <div className="content">
                 <div className="container">
                     <form className="content__form">
-                        <PersonalInfo example={example.personal} />
+                        <PersonalInfo personal={cvFields.personal} />
                         <div className="education-and-experience">
-                            <Education example={example.education} />
-                            <Experience example={example.experience} /> 
+                            <Education educationFields={cvFields.education} />
+                            <Experience experienceFields={cvFields.experience} /> 
                         </div>
                     </form>
                 </div>

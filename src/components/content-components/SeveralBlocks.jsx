@@ -1,11 +1,11 @@
 import SingleBlock from "../utilities/singleEducationAndExperienceBlock";
 
 function SeveralBlocks(props) {
-    const {allBlocks, example} = props;
+    const {allBlocks, fields} = props;
     
     return (
-        allBlocks.map(block => {
-            return <SingleBlock educationAndJob={props.educationAndJob} key={block.id} example={example}/>
+        allBlocks.map((block, index) => {
+            return <SingleBlock educationAndJob={props.educationAndJob} key={block.id} field={fields[index + 1]}/>
         })
     );
 }

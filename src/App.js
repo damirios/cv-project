@@ -1,10 +1,13 @@
 import Header from './components/Header';
 import Content from './components/Content';
 import Footer from './components/Footer';
+import Preview from './components/Preview';
+import { DEFAULT_AVATAR_SRC } from './components/utilities/variables';
+import jsPDF from 'jspdf';
 
 import './styles/style.css'
 import { Component } from 'react';
-import { DEFAULT_AVATAR_SRC } from './components/utilities/variables';
+import collectFormData from './components/utilities/collectFormData';
 
 
 class App extends Component {
@@ -12,7 +15,17 @@ class App extends Component {
     super(props);
     
     this.state = {
-      example: {personal: null, education: null, experience: null}
+      cvFields: {
+        personal: null,
+        education: {
+          1: null
+        }, 
+        experience: {
+          1: null
+        }
+      },
+      preview: false,
+      exampleLoaded: false
     }
 
     // this.loadExample = this.loadExample.bind(this);
@@ -22,46 +35,105 @@ class App extends Component {
   }
 
   loadExample = () => {
-    // form fiiling example
-    this.setState({
-      example: {
-        personal: {
-          firstName: 'Irina', lastName: 'Kondrateva', position: 'Designer', photoSRC: './images/ellie.jfif',
-          address: 'Glazov, Pekhtina st., 114', phone: '+123456789',
-          email: 'my@cool.email', aboutMe: "Some useful info about yourself should be here"
-        },
-        education: {
-          degree: 'Bachelor of Physics', university: 'Kazan Federal University',
-          from: new Date(2018, 9, 1), to: new Date(2022, 6, 30),
-          details: 'Studied at KFU for 4 year.'
-        },
-        experience: {
-          position: 'Junior Fullstack Developer', organization: 'The Odin Project',
-          from: new Date(2022, 3, 9), to: new Date(2022, 10, 17),
-          details: 'Enjoy working as web developer!'
+    // if preview mode is on, then turn it off before load example
+    const showPreviewButton = document.querySelector('.header__preview');
+
+    if (this.state.preview) {
+      this.setState({preview: false});
+      showPreviewButton.classList.remove('show-preview');
+    }
+
+    if (!this.state.exampleLoaded) {
+      // reset form before loading example
+      this.resetForm();
+  
+      // form fiiling example
+      this.setState({
+        cvFields: {
+          personal: {
+            firstName: 'Irina', lastName: 'Kondrateva', position: 'Designer', photo: './images/ellie.jfif',
+            address: 'Glazov, Pekhtina st., 114', phone: '+123456789',
+            email: 'my@cool.email', description: "Some useful info about yourself should be here"
+          },
+          education: {
+            1: {
+              degree: 'Bachelor of Physics', university: 'Kazan Federal University',
+              dateFrom: new Date(2018, 9, 1), dateTo: new Date(2022, 6, 30),
+              details: 'Studied at KFU for 4 year.'
+            },
+          },
+          experience: {
+            1: {
+              position: 'Junior Fullstack Developer', organization: 'The Odin Project',
+              dateFrom: new Date(2022, 3, 9), dateTo: new Date(2022, 10, 17),
+              details: 'Enjoy working as web developer!'
+            }
+          }
         }
-      }
-    }); 
+      });
+  
+      this.setState({exampleLoaded: true});
+    }
   }
 
   showPreview = () => {
-    console.log(this);
+    const showPreviewButton = document.querySelector('.header__preview');
+
+    if (this.state.preview === true) {
+      this.setState({preview: false});
+      showPreviewButton.classList.remove('show-preview');
+    } else {
+      this.setState({
+        preview: true,
+        cvFields: collectFormData()
+      });
+      showPreviewButton.classList.add('show-preview');
+    }
   }
 
   resetForm = () => {
+    // if preview mode is on, then turn it off before reset the form
+    const showPreviewButton = document.querySelector('.header__preview');
+
+    if (this.state.preview) {
+      this.setState({preview: false});
+      showPreviewButton.classList.remove('show-preview');
+    }
+
     this.setState({
-      example: {personal: null, education: null, experience: null}
+      cvFields: {personal: null, education: {1: null}, experience: {1: null}},
     });
 
     const form = document.querySelector('.content__form');
-    form.reset();
+    if (form) {
+      form.reset();
+    }
 
     const avatarPhoto = document.querySelector('.personal-info__photo label img');
-    avatarPhoto.src = DEFAULT_AVATAR_SRC;
+    if (avatarPhoto) {
+      avatarPhoto.src = DEFAULT_AVATAR_SRC;
+    }
+
+    this.setState({exampleLoaded: false});
   }
 
   createPDF = () => {
-    console.log(this);
+    // const doc = new jsPDF('p', 'mm', [297, 210]);
+
+    // const preview = document.querySelector('.preview').innerHTML;
+
+    // doc.html(preview, {
+    //   callback: function (doc) {
+    //     doc.save();
+    //   },
+    // });
+  }
+
+  getPreviewOrContent() {
+    if (this.state.preview) {
+      return <Preview cvInfo={this.state.cvFields}/>
+    }
+    return <Content cvFields={this.state.cvFields} />
   }
 
   buttonFunctions = {
@@ -74,9 +146,9 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Header buttons={this.buttonFunctions}/>
-        <Content example={this.state.example}/>
-        <Footer/>
+        <Header preview={this.state.preview} buttons={this.buttonFunctions} />
+        {this.getPreviewOrContent()}
+        <Footer />
       </div>
     );
   }

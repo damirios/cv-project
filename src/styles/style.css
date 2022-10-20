@@ -72,6 +72,10 @@ body {
 	box-shadow: 0px 0px 1px #333;
 }
 
+.header__buttons button.show-preview {
+	background-color: rgb(238, 130, 21);
+}
+
 .content {
 	flex: 1 0 auto;
 	padding: 20px 0;
@@ -299,7 +303,7 @@ body {
 
 /* Education */
 .education {
-	flex: 1 1 300px;
+	flex: 1 1 250px;
 	background-color: rgb(25, 133, 88);
 	border-radius: 10px;
 	padding: 15px;
@@ -312,7 +316,7 @@ body {
 
 /* Experience */
 .experience {
-	flex: 1 1 300px;
+	flex: 1 1 250px;
 	background-color: rgb(6, 180, 183);
 	border-radius: 10px;
 	padding: 15px;
@@ -340,4 +344,161 @@ body {
 .controller h2 {
 	align-self: start;
 	margin-bottom: 0;
+}
+
+/* PREVIEW ==============================================================================================================*/ 
+.preview {
+	flex: 1 0 auto;
+	padding: 20px 0;
+}
+
+.preview__column {
+	padding: 15px;
+	max-height: 1754px; /* A4 format */
+	max-width: 1240px; /* A4 format */
+	margin: 0 auto;
+	display: flex;
+	flex-direction: column;
+	row-gap: 20px;
+	box-shadow: 0 0 5px #000;
+	background-color: rgb(240, 240, 240);
+	border-radius: 5px;
+}
+
+.preview__about-me {
+	display: flex;
+	align-items: center;
+	column-gap: 30px;
+}
+
+.preview__photo {
+	flex: 0 0 100px;
+	/* width: 100px; */
+	height: 100px;
+	border-radius: 50%;
+	overflow: hidden;
+}
+
+.preview__photo img {
+	width: 100px;
+	height: 100px;
+	object-fit: cover;
+}
+
+.preview__name {
+	display: flex;
+	flex-direction: column;
+	row-gap: 10px;
+	font-family: 'Open Sans';
+	font-size: 26px;
+	font-weight: 600;
+	letter-spacing: 0.9px;
+	margin-right: 80px;
+}
+
+.preview__description {
+	align-self: start;
+	margin-top: 15px;
+	height: 100%;
+	font-size: 16px;
+	color: #333;
+	letter-spacing: 0.7px;
+}
+
+.preview__contacts {
+	flex: 1 0 auto;
+	display: flex;
+	flex-direction: column;
+	row-gap: 10px;
+	font-family: 'Open Sans';
+	font-size: 20px;
+	font-weight: 400;
+	letter-spacing: 0.9px;
+	text-align: right;
+}
+
+.preview__career {
+	display: flex;
+	flex-direction: column;
+	row-gap: 20px;
+}
+
+.preview__career .career-place {
+	padding: 20px;
+	box-shadow: 1px 1px 5px rgb(72, 72, 72);
+	background-color: rgb(95, 244, 216);
+	border-radius: 5px;
+}
+
+.preview__career .career-place h2 {
+	font-size: 20px;
+	font-weight: 700;
+	margin-bottom: 25px;
+	font-style: italic;
+	color: rgb(13, 50, 235);
+}
+
+.experience-education-blocks {
+	display: flex;
+	flex-direction: column;
+	row-gap: 40px;
+}
+
+.experience-education-block {
+	display: flex;
+	justify-content: space-between;
+}
+
+.experience-education-block .organization {
+	flex: 0 0 450px;
+	display: flex;
+	flex-direction: column;
+	row-gap: 20px;
+}
+
+.experience-education-block .organization__name {
+	font-size: 24px;
+	color: rgb(248, 140, 0);
+	font-weight: 600;
+	font-style: italic;
+}
+
+.experience-education-block .organization__dates {
+	font-size: 16px;
+	color: rgb(193, 140, 70);
+	font-weight: 600;
+}
+
+.experience-education-block .person {
+	flex: 1 0 500px;
+	display: flex;
+	flex-direction: column;
+	row-gap: 20px;
+}
+
+.experience-education-block .person__position {
+	font-size: 24px;
+	color: rgb(248, 140, 0);
+	font-weight: 600;
+	word-break: break-all;
+}
+
+.experience-education-block .person__details {
+	font-size: 16px;
+	color: rgb(79, 79, 80);
+	font-weight: 600;
+	line-height: 150%;
+	letter-spacing: 0.7px;
+}
+
+.does-not-work {
+	text-decoration: line-through;
+	opacity: 0.5;
+	cursor: default;
+	/* transition: all 0.1s ease-in 0s; */
+}
+.does-not-work:hover {
+	text-decoration: line-through;
+	opacity: 0;
+	cursor: default;
 }
