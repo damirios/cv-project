@@ -41,8 +41,8 @@ export default function App() {
 				preview: false,
 				cvFields: {
 					personal: {
-						firstName: 'Irina', lastName: 'Kondrateva', position: 'Designer', photo: './images/ellie.jfif',
-						address: 'Glazov, Pekhtina st., 114', phone: '+123456789',
+						firstName: 'Ellie', lastName: 'Williams', position: 'Singer', photo: './images/ellie.jfif',
+						address: 'Boston, SQ, 114', phone: '+123456789',
 						email: 'my@cool.email', description: "Some useful info about yourself should be here"
 					},
 					education: {
