@@ -150,6 +150,7 @@ body {
 	border-radius: 10px;
 	flex: 1 1 300px;
 	max-width: 370px;
+	max-height: 600px;
 	background-color: rgb(99, 155, 54);
 	box-shadow: 1px 2px 5px #555;
 }
@@ -215,6 +216,7 @@ body {
 .personal-info__about-me textarea {
 	width: 100%;
 	min-height: 120px;
+	max-height: 200px;
 	resize: vertical;
 }
 
@@ -491,14 +493,13 @@ body {
 	letter-spacing: 0.7px;
 }
 
-.does-not-work {
+/* .not-available {
 	text-decoration: line-through;
-	opacity: 0.5;
+	opacity: 0.7;
 	cursor: default;
-	/* transition: all 0.1s ease-in 0s; */
 }
-.does-not-work:hover {
+.not-available:hover {
 	text-decoration: line-through;
 	opacity: 0;
 	cursor: default;
-}
+} */

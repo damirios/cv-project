@@ -5,7 +5,10 @@ function getPreviewButton(props) {
     return "Show Preview";
 }
 
-function Header(props) {
+export default function Header(props) {
+    const {loadExample, showPreview, resetForm, createPDF} = props.buttons;
+    const {preview} = props;
+
     return (
         <header className="header">
             <div className="container">
@@ -16,15 +19,16 @@ function Header(props) {
                         </span>
                     </div>
                     <div className="header__buttons">
-                        <button onClick={props.buttons.loadExample} className="header__example">Load Example</button>
-                        <button onClick={props.buttons.showPreview} className="header__preview">{getPreviewButton(props)}</button>
-                        <button onClick={props.buttons.resetForm} className="header__reset">Reset Form</button>
-                        <button onClick={props.buttons.createPDF} className="does-not-work header__create-PDF">Create PDF</button>
+                        <button onClick={loadExample} className="header__example">Load Example</button>
+                        <button onClick={showPreview} className="header__preview">{getPreviewButton(props)}</button>
+                        <button onClick={resetForm} className="header__reset">Reset Form</button>
+                        <button onClick={preview ? createPDF : showPreview} className="header__create-PDF">
+                            {preview ? 'Create PDF' : 'To preview'} 
+                        </button>
+                        
                     </div>
                 </div>
             </div>
         </header>
     );
 }
-
-export default Header;
