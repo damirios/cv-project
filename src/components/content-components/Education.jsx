@@ -32,6 +32,7 @@ function Education(props) {
         position: 'Degree'
     }
 
+    console.log(props);
     return (
         <div className="education">
             <h2 className='header-text'>Education</h2>

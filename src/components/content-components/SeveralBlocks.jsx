@@ -2,6 +2,7 @@ import SingleBlock from "../utilities/singleEducationAndExperienceBlock";
 
 function SeveralBlocks(props) {
     const {allBlocks, fields} = props;
+    console.log(props);
     
     return (
         allBlocks.map((block, index) => {
