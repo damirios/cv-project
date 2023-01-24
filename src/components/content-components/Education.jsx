@@ -1,16 +1,10 @@
-import React, { Component, useState } from 'react';
+import React, { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import SeveralBlocks from './SeveralBlocks';
 
 function Education(props) {
-    const allBlocksInitial = [];
-    
-    for (let i = 0; i < Object.keys(props.educationFields).length - 1; i++) {
-        allBlocksInitial.push({id: uuidv4()});
-    }
-
     const [newBlock, setNewBlock] = useState({id: uuidv4()});
-    const [allBlocks, setAllBlocks] = useState(allBlocksInitial);
+    const [allBlocks, setAllBlocks] = useState([{id: uuidv4()}]);
 
     function addBlock() {
         setAllBlocks(allBlocks.concat(newBlock));
@@ -24,7 +18,6 @@ function Education(props) {
     }
 
     const { educationFields } = props;
-
     educationFields.type = 'education'; // заполняю блок education, а не experience (оба имеют одинаковую структуру и компоненты)
 
     const educationAndJob = {
@@ -32,7 +25,6 @@ function Education(props) {
         position: 'Degree'
     }
 
-    console.log(props);
     return (
         <div className="education">
             <h2 className='header-text'>Education</h2>
